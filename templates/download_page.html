@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>OpenVPN Download</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {% for error in errors %}
+            <div class="alert alert-danger alert-dismissable" role="alert">
+                <span class="sr-only">Error:</span>
+                {{ error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            {% endfor %}
+
+            <div>
+                <h2>Getting started</h2>
+                <hr>
+                <p>
+                    A vpn connection is required to connect to the challenge containers
+                </p>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-home-list"
+                                data-toggle="list" href="#list-home" role="tab" aria-controls="home">Download the
+                                OpenVPN client</a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                                href="#list-profile" role="tab" aria-controls="profile">Generate a VPN configuration</a>
+                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                                href="#list-messages" role="tab" aria-controls="messages">Connect to the VPN</a>
+                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
+                                href="#list-settings" role="tab" aria-controls="settings">Test your connection</a>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-home" role="tabpanel"
+                                aria-labelledby="list-home-list">The vpn client can be downloaded from here: <a
+                                    target="blank"
+                                    href="https://openvpn.net/download-open-vpn/">openvpn.net/download-open-vpn/</a>
+                                <br>
+                                If you are using linux you should download it as a package
+                            </div>
+                            <div class="tab-pane fade" id="list-profile" role="tabpanel"
+                                aria-labelledby="list-profile-list">Each vpn client requires a unique configuration
+                                file. If you have already generated one, please download it again instead of geneating a
+                                new one<br><a href="/openvpn_get_file"><button class="btn btn-primary">Download
+                                        config
+                                        file <i class="fa fa-download" aria-hidden="true"></i>
+                                    </button></a>
+                                <br>
+                                <br>
+                                If you need to revoke the access rights to all previous config files press this button
+                                <br>
+                                <a href="/openvpn_revoke"><button class="btn btn-danger">Revoke previous
+                                        configs</button></a>
+                            </div>
+                            <div class="tab-pane fade" id="list-messages" role="tabpanel"
+                                aria-labelledby="list-messages-list">If you are using linux open a terminal in the same
+                                directory as your config file, then run the command: <br> <kbd>sudo openvpn
+                                    &lt;username&gt;.ovpn</kbd>
+                                <br>
+                                <br>
+                                For Windows users you can follow this guide: <a target="blank"
+                                    href="https://imgur.com/a/Wh3oG7d?fbclid=IwAR2q2PF_rVBCFccprG_p4_eIhLJkzuJ3aKv-M7_kZjmDcz3KdjTEMfmjaos">imgur</a>
+                            </div>
+                            <div class="tab-pane fade" id="list-settings" role="tabpanel"
+                                aria-labelledby="list-settings-list"><a target="blank" href="http://10.9.8.1:8080/">Go
+                                    to this link,
+                                </a> if you see "VPN CONNECTION WORKS!" the vpn connection works</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
